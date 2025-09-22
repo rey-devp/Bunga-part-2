@@ -36,6 +36,19 @@
         }
       }
 
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+
       .petal-animation {
         animation: petal-dance 4s ease-in-out infinite;
       }
@@ -170,7 +183,7 @@
       </h1>
       <p class="text-white text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
         Selamat datang di dunia bunga yang menawan! Klik bunga-bunga untuk
-        merasakan keajaiban alam digital.
+        melihat apakah akan mekar atau layu.
       </p>
     </header>
 
@@ -178,78 +191,106 @@
     <main class="relative z-10 container mx-auto px-4 py-8">
       <!-- Interactive Flower Garden -->
       <section
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12"
       >
         <div
           class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌹', 'Mawar Merah', 'Simbol cinta dan kasih sayang')"
+          data-flower="rose"
+          onclick="toggleFlower(this)"
         >
-          <div class="text-6xl mb-3 petal-animation">🌹</div>
+          <div class="text-6xl mb-3 petal-animation flower-emoji">🌹</div>
           <h3 class="text-white font-semibold text-lg">Mawar Merah</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
+          <p class="text-white opacity-75 text-sm flower-status">
+            Klik untuk mekar!
+          </p>
+          <div class="water-button hidden mt-3">
+            <button
+              onclick="waterFlower(this)"
+              class="btn-hover text-white font-semibold py-2 px-4 rounded-full text-sm"
+            >
+              💧 Siram Bunga 💧
+            </button>
+          </div>
         </div>
 
         <div
           class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌻', 'Bunga Matahari', 'Selalu mengikuti arah matahari')"
+          data-flower="sunflower"
+          onclick="toggleFlower(this)"
         >
-          <div class="text-6xl mb-3 petal-animation">🌻</div>
+          <div class="text-6xl mb-3 petal-animation flower-emoji">🌻</div>
           <h3 class="text-white font-semibold text-lg">Bunga Matahari</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
+          <p class="text-white opacity-75 text-sm flower-status">
+            Klik untuk mekar!
+          </p>
+          <div class="water-button hidden mt-3">
+            <button
+              onclick="waterFlower(this)"
+              class="btn-hover text-white font-semibold py-2 px-4 rounded-full text-sm"
+            >
+              💧 Siram Bunga 💧
+            </button>
+          </div>
         </div>
 
         <div
           class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌺', 'Bunga Hibiscus', 'Keindahan tropis yang memukau')"
+          data-flower="hibiscus"
+          onclick="toggleFlower(this)"
         >
-          <div class="text-6xl mb-3 petal-animation">🌺</div>
+          <div class="text-6xl mb-3 petal-animation flower-emoji">🌺</div>
           <h3 class="text-white font-semibold text-lg">Bunga Hibiscus</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
+          <p class="text-white opacity-75 text-sm flower-status">
+            Klik untuk mekar!
+          </p>
+          <div class="water-button hidden mt-3">
+            <button
+              onclick="waterFlower(this)"
+              class="btn-hover text-white font-semibold py-2 px-4 rounded-full text-sm"
+            >
+              💧 Siram Bunga 💧
+            </button>
+          </div>
         </div>
 
         <div
           class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌸', 'Bunga Sakura', 'Keindahan yang singkat namun berkesan')"
+          data-flower="sakura"
+          onclick="toggleFlower(this)"
         >
-          <div class="text-6xl mb-3 petal-animation">🌸</div>
+          <div class="text-6xl mb-3 petal-animation flower-emoji">🌸</div>
           <h3 class="text-white font-semibold text-lg">Bunga Sakura</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
+          <p class="text-white opacity-75 text-sm flower-status">
+            Klik untuk mekar!
+          </p>
+          <div class="water-button hidden mt-3">
+            <button
+              onclick="waterFlower(this)"
+              class="btn-hover text-white font-semibold py-2 px-4 rounded-full text-sm"
+            >
+              💧 Siram Bunga 💧
+            </button>
+          </div>
         </div>
 
         <div
           class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌼', 'Bunga Daisy', 'Kesederhanaan yang mempesona')"
+          data-flower="tulip"
+          onclick="toggleFlower(this)"
         >
-          <div class="text-6xl mb-3 petal-animation">🌼</div>
-          <h3 class="text-white font-semibold text-lg">Bunga Daisy</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
-        </div>
-
-        <div
-          class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌷', 'Bunga Tulip', 'Elegan dan anggun dari Belanda')"
-        >
-          <div class="text-6xl mb-3 petal-animation">🌷</div>
+          <div class="text-6xl mb-3 petal-animation flower-emoji">🌷</div>
           <h3 class="text-white font-semibold text-lg">Bunga Tulip</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
-        </div>
-
-        <div
-          class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌹', 'Bunga Mawar Putih', 'Kemurnian dan kedamaian')"
-        >
-          <div class="text-6xl mb-3 petal-animation">🤍</div>
-          <h3 class="text-white font-semibold text-lg">Mawar Putih</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
-        </div>
-
-        <div
-          class="flower-card rounded-2xl p-6 text-center flower-float flower-glow cursor-pointer"
-          onclick="bloomFlower(this, '🌺', 'Bunga Anggrek', 'Kemewahan dan keanggunan')"
-        >
-          <div class="text-6xl mb-3 petal-animation">💜</div>
-          <h3 class="text-white font-semibold text-lg">Bunga Anggrek</h3>
-          <p class="text-white opacity-75 text-sm">Klik untuk mekar!</p>
+          <p class="text-white opacity-75 text-sm flower-status">
+            Klik untuk mekar!
+          </p>
+          <div class="water-button hidden mt-3">
+            <button
+              onclick="waterFlower(this)"
+              class="btn-hover text-white font-semibold py-2 px-4 rounded-full text-sm"
+            >
+              💧 Siram Bunga 💧
+            </button>
+          </div>
         </div>
       </section>
 
@@ -293,51 +334,151 @@
 
     <!-- Footer -->
     <footer class="relative z-10 text-center py-8 text-white opacity-75">
-      <p class="text-lg">Copyright © 2025 rey-devp. All Rights Reserved.</p>
-      <div class="mt-4 text-4xl">🌺🌸🌼🌻🌷</div>
+      <p class="text-lg">Dibuat dengan ❤️ untuk kebahagiaan Anda</p>
+      <div class="mt-4 text-4xl">🌺🌸🌻🌷🌹</div>
     </footer>
 
-    <!-- Modal untuk Bloom Effect -->
+    <!-- Modal untuk Watering -->
     <div
-      id="bloomModal"
+      id="waterModal"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
     >
       <div class="bg-white rounded-3xl p-8 m-4 max-w-md text-center bounce-in">
-        <div id="bloomEmoji" class="text-8xl mb-4"></div>
-        <h3
-          id="bloomTitle"
-          class="text-2xl font-bold mb-2 text-purple-800"
-        ></h3>
-        <p id="bloomDescription" class="text-gray-600 mb-6"></p>
-        <button
-          onclick="closeBloomModal()"
-          class="btn-hover text-white font-bold py-3 px-6 rounded-full"
-        >
-          Tutup
-        </button>
+        <div class="text-8xl mb-4">💧</div>
+        <h3 class="text-2xl font-bold mb-2 text-blue-600">Menyiram Bunga</h3>
+        <p class="text-gray-600 mb-6">
+          Bunga Anda sedang disirami dengan penuh kasih sayang...
+        </p>
+        <div class="text-6xl mb-4" id="wateringFlower">🌱</div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-6">
+          <div
+            id="waterProgress"
+            class="bg-blue-500 h-3 rounded-full transition-all duration-[3000ms]"
+            style="width: 0%"
+          ></div>
+        </div>
       </div>
     </div>
 
     <script>
+      // Objek untuk menyimpan status bunga
+      const flowerStates = {
+        rose: { fresh: "🌹", wilted: "🥀", state: "fresh" },
+        sunflower: { fresh: "🌻", wilted: "🌰", state: "fresh" },
+        hibiscus: { fresh: "🌺", wilted: "🍂", state: "fresh" },
+        sakura: { fresh: "🌸", wilted: "🥀", state: "fresh" },
+        tulip: { fresh: "🌷", wilted: "🍂", state: "fresh" },
+      };
+
       // Array fakta bunga
       const flowerFacts = [
         "Bunga mawar memiliki lebih dari 100 spesies dan telah menjadi simbol cinta selama ribuan tahun!",
         "Bunga matahari selalu mengikuti arah matahari dan dapat tumbuh hingga 4 meter tingginya!",
         "Bunga tulip pernah menjadi mata uang di Belanda pada abad ke-17!",
         "Bunga sakura hanya mekar selama 1-2 minggu dalam setahun di Jepang!",
-        "Bunga anggrek adalah salah satu keluarga bunga terbesar dengan lebih dari 25.000 spesies!",
-        "Bunga lotus dapat hidup lebih dari 1.000 tahun dan melambangkan kemurnian!",
-        "Bunga lavender tidak hanya indah, tapi juga memiliki aroma yang menenangkan!",
-        "Bunga daisy sebenarnya adalah kumpulan dari ratusan bunga kecil!",
+        "Bunga hibiscus adalah bunga nasional Malaysia dan dapat dimakan sebagai teh!",
       ];
 
       let currentFactIndex = 0;
       let isPlayingMusic = false;
 
+      // Fungsi toggle bunga (mekar/layu)
+      function toggleFlower(element) {
+        const flowerType = element.getAttribute("data-flower");
+        const flowerData = flowerStates[flowerType];
+        const emojiElement = element.querySelector(".flower-emoji");
+        const statusElement = element.querySelector(".flower-status");
+        const waterButton = element.querySelector(".water-button");
+
+        // Random chance untuk layu (30%)
+        const willWilt = Math.random() < 0.3;
+
+        if (flowerData.state === "fresh") {
+          if (willWilt) {
+            // Bunga menjadi layu
+            flowerData.state = "wilted";
+            emojiElement.textContent = flowerData.wilted;
+            statusElement.textContent = "Oh tidak! Bunga layu!";
+            waterButton.classList.remove("hidden");
+            element.style.filter = "grayscale(50%) brightness(0.7)";
+
+            // Efek shake untuk menunjukkan bunga layu
+            element.style.animation = "shake 0.5s ease-in-out";
+            setTimeout(() => {
+              element.style.animation = "";
+            }, 500);
+          } else {
+            // Bunga mekar cantik
+            statusElement.textContent = "Bunga mekar indah! ✨";
+            createSparkles(element);
+
+            // Efek bloom
+            element.style.transform = "scale(1.1)";
+            element.style.filter = "brightness(1.2) saturate(1.3)";
+            setTimeout(() => {
+              element.style.transform = "";
+              element.style.filter = "";
+            }, 500);
+          }
+        }
+
+        // Efek suara (vibration di mobile)
+        if (navigator.vibrate) {
+          navigator.vibrate([100, 50, 100]);
+        }
+      }
+
+      // Fungsi menyiram bunga
+      function waterFlower(button) {
+        const flowerCard = button.closest(".flower-card");
+        const flowerType = flowerCard.getAttribute("data-flower");
+        const flowerData = flowerStates[flowerType];
+
+        // Tampilkan modal penyiraman
+        document.getElementById("wateringFlower").textContent =
+          flowerData.wilted;
+        document.getElementById("waterModal").classList.remove("hidden");
+
+        // Animasi progress bar
+        const progressBar = document.getElementById("waterProgress");
+        progressBar.style.width = "0%";
+
+        setTimeout(() => {
+          progressBar.style.width = "100%";
+        }, 100);
+
+        // Setelah 3 detik, bunga segar kembali
+        setTimeout(() => {
+          flowerData.state = "fresh";
+          const emojiElement = flowerCard.querySelector(".flower-emoji");
+          const statusElement = flowerCard.querySelector(".flower-status");
+          const waterButton = flowerCard.querySelector(".water-button");
+
+          emojiElement.textContent = flowerData.fresh;
+          statusElement.textContent = "Bunga segar kembali! 🌿";
+          waterButton.classList.add("hidden");
+          flowerCard.style.filter = "";
+
+          // Tutup modal
+          document.getElementById("waterModal").classList.add("hidden");
+
+          // Efek sparkle untuk bunga yang segar
+          createSparkles(flowerCard);
+
+          // Reset progress bar
+          progressBar.style.width = "0%";
+
+          // Vibration sukses
+          if (navigator.vibrate) {
+            navigator.vibrate([200, 100, 200]);
+          }
+        }, 3000);
+      }
+
       // Inisialisasi background petals
       function createBackgroundPetals() {
         const container = document.getElementById("backgroundPetals");
-        const petals = ["🌸", "🌺", "🌼", "🌻", "🌷", "🌹"];
+        const petals = ["🌸", "🌺", "🌻", "🌷", "🌹"];
 
         for (let i = 0; i < 15; i++) {
           const petal = document.createElement("div");
@@ -348,34 +489,6 @@
           petal.style.animationDelay = Math.random() * 6 + "s";
           container.appendChild(petal);
         }
-      }
-
-      // Fungsi bloom bunga
-      function bloomFlower(element, emoji, title, description) {
-        // Efek sparkle
-        createSparkles(element);
-
-        // Tampilkan modal
-        document.getElementById("bloomEmoji").textContent = emoji;
-        document.getElementById("bloomTitle").textContent = title;
-        document.getElementById("bloomDescription").textContent = description;
-        document.getElementById("bloomModal").classList.remove("hidden");
-
-        // Efek suara (simulasi dengan vibration di mobile)
-        if (navigator.vibrate) {
-          navigator.vibrate([100, 50, 100]);
-        }
-
-        // Efek visual pada elemen
-        element.style.transform = "scale(1.1) rotate(5deg)";
-        setTimeout(() => {
-          element.style.transform = "";
-        }, 300);
-      }
-
-      // Tutup modal
-      function closeBloomModal() {
-        document.getElementById("bloomModal").classList.add("hidden");
       }
 
       // Buat efek sparkle
@@ -397,7 +510,7 @@
 
       // Hujan kelopak bunga
       function createRainbowPetals() {
-        const petals = ["🌸", "🌺", "🌼", "🌻", "🌷", "🌹", "💮", "🏵️"];
+        const petals = ["🌸", "🌺", "🌻", "🌷", "🌹"];
 
         for (let i = 0; i < 30; i++) {
           setTimeout(() => {
@@ -426,20 +539,17 @@
         }
       }
 
-      // Simulasi musik (dalam implementasi nyata bisa menggunakan Web Audio API)
+      // Simulasi musik
       function playHappySound() {
         if (!isPlayingMusic) {
-          // Efek visual untuk simulasi musik
           document.body.style.animation = "rainbow 2s ease-in-out infinite";
           isPlayingMusic = true;
 
-          // Hentikan setelah 10 detik
           setTimeout(() => {
             document.body.style.animation = "";
             isPlayingMusic = false;
           }, 10000);
 
-          // Efek vibration untuk mobile
           if (navigator.vibrate) {
             navigator.vibrate([200, 100, 200, 100, 200]);
           }
@@ -481,14 +591,11 @@
       // Inisialisasi saat halaman dimuat
       window.addEventListener("load", function () {
         createBackgroundPetals();
-
-        // Auto-rotate fakta setiap 10 detik
         setInterval(showRandomFact, 10000);
       });
 
       // Responsive handling
       window.addEventListener("resize", function () {
-        // Update background petals untuk ukuran layar baru
         document.getElementById("backgroundPetals").innerHTML = "";
         createBackgroundPetals();
       });
