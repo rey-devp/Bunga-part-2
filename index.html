@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Taman Bunga Digital - Keindahan yang Menawan</title>
+    <title>Flowersid</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
@@ -179,11 +179,11 @@
     <!-- Header -->
     <header class="relative z-10 text-center py-8 px-4">
       <h1 class="text-4xl md:text-6xl font-bold rainbow-text mb-4 bounce-in">
-        🌸 Taman Bunga Digital 🌸
+        🌸 Taman Bunga 🌸
       </h1>
       <p class="text-white text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
-        Selamat datang di dunia bunga yang menawan! Klik bunga-bunga untuk
-        melihat apakah akan mekar atau layu.
+        Selamat datang di dunia bunga yang menawan! (kayak pembuatnya). Klik
+        bunga-bunga untuk melihat apakah akan mekar atau layu.
       </p>
     </header>
 
@@ -334,7 +334,7 @@
 
     <!-- Footer -->
     <footer class="relative z-10 text-center py-8 text-white opacity-75">
-      <p class="text-lg">Dibuat dengan ❤️ untuk kebahagiaan Anda</p>
+      <p class="text-lg">Dibuat biar mood si nuub balik</p>
       <div class="mt-4 text-4xl">🌺🌸🌻🌷🌹</div>
     </footer>
 
@@ -536,23 +536,6 @@
               }
             }, 50);
           }, i * 200);
-        }
-      }
-
-      // Simulasi musik
-      function playHappySound() {
-        if (!isPlayingMusic) {
-          document.body.style.animation = "rainbow 2s ease-in-out infinite";
-          isPlayingMusic = true;
-
-          setTimeout(() => {
-            document.body.style.animation = "";
-            isPlayingMusic = false;
-          }, 10000);
-
-          if (navigator.vibrate) {
-            navigator.vibrate([200, 100, 200, 100, 200]);
-          }
         }
       }
 
